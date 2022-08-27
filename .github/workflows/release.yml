@@ -36,7 +36,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ghcr.io/rluisr/tvbit-bot
+          images: ghcr.io/rluisr/datadog-slo-insufflate
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx

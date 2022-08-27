@@ -13,8 +13,8 @@ LABEL maintainer="rluisr" \
   org.opencontainers.image.source="https://github.com/rluisr/datadog-slo-insufflate" \
   org.opencontainers.image.vendor="rluisr" \
   org.opencontainers.image.title="datadog-slo-insufflate" \
-  org.opencontainers.image.description="TradingView webhook handler for Bybit." \
-  org.opencontainers.image.licenses="AGPL"
+  org.opencontainers.image.description="SLO God bless. Notify SLO report to Slack." \
+  org.opencontainers.image.licenses="WTFPL"
 RUN apk add --no-cache ca-certificates libc6-compat
 COPY --from=builder /go/src/datadog-slo-insufflate/app /app
 ENTRYPOINT ["/app"]
