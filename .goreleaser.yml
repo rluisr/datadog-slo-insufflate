@@ -1,4 +1,3 @@
-
 project_name: datadog-slo-insufflate
 env:
   - GO111MODULE=on

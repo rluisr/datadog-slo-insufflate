@@ -5,12 +5,27 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/rluisr/datadog-slo-insufflate/config"
 	"github.com/rluisr/datadog-slo-insufflate/datadog"
 	"github.com/rluisr/datadog-slo-insufflate/slack"
+	"os"
+)
+
+var (
+	version string
 )
 
 func main() {
+	versionSFlag := flag.Bool("v", false, "version")
+	versionLFlag := flag.Bool("version", false, "version")
+	flag.Parse()
+	if *versionSFlag || *versionLFlag {
+		fmt.Println("version: ", version)
+		os.Exit(0)
+	}
+
 	env, err := config.NewEnv()
 	if err != nil {
 		panic(err)

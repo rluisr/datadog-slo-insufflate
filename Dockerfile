@@ -5,7 +5,7 @@ ARG VERSION=0.0.0
 WORKDIR /go/src/datadog-slo-insufflate
 COPY . .
 RUN apk --no-cache add git openssh build-base
-RUN cd cmd && go build -ldflags "-X main.version=${VERSION}" -o app .
+RUN go build -ldflags "-X main.version=${VERSION}" -o app .
 
 FROM alpine as production
 LABEL maintainer="rluisr" \
