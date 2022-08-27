@@ -12,7 +12,7 @@ import (
 	"math"
 )
 
-func (s *Client) BuildBlock(sloResults []models.SLOResult, ddSLOURL string) []slack.Block {
+func (s *Client) BuildBlock(sloResults []models.SLOResult, ddSLOURL, version string) []slack.Block {
 	headerBlock := &slack.SectionBlock{
 		Type: slack.MBTHeader,
 		Text: &slack.TextBlockObject{
@@ -62,10 +62,19 @@ func (s *Client) BuildBlock(sloResults []models.SLOResult, ddSLOURL string) []sl
 				},
 			},
 		}
-		sloBlocks = append(sloBlocks, sloBlock)
+		sloBlocks = append(sloBlocks, sloBlock, slack.NewDividerBlock())
 	}
 
 	blocks = append(blocks, sloBlocks...)
+
+	footerBlock := &slack.SectionBlock{
+		Type: slack.MBTSection,
+		Text: &slack.TextBlockObject{
+			Type: slack.MarkdownType,
+			Text: fmt.Sprintf("Powered by <https://github.com/rluisr/datadog-slo-insufflate|datadog-slo-insufflate> %s", version),
+		},
+	}
+	blocks = append(blocks, footerBlock)
 
 	return blocks
 }

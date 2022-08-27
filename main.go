@@ -42,7 +42,7 @@ func main() {
 		panic(err)
 	}
 
-	blocks := slackClient.BuildBlock(sloResults, env.DDSLOURL)
+	blocks := slackClient.BuildBlock(sloResults, env.DDSLOURL, version)
 	err = slackClient.Send(blocks)
 	if err != nil {
 		panic(err)
