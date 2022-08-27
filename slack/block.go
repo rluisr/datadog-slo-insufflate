@@ -13,28 +13,31 @@ import (
 )
 
 func (s *Client) BuildBlock(sloResults []models.SLOResult, ddSLOURL string) []slack.Block {
-	var blocks []slack.Block
-
-	// header
-	blocks = append(blocks, &slack.SectionBlock{
+	headerBlock := &slack.SectionBlock{
 		Type: slack.MBTHeader,
 		Text: &slack.TextBlockObject{
 			Type:  slack.PlainTextType,
 			Text:  s.Title,
 			Emoji: true,
 		},
-	})
+	}
 
-	// divider
-	blocks = append(blocks, slack.NewDividerBlock())
+	blocks := []slack.Block{
+		headerBlock,
+		slack.NewDividerBlock(),
+	}
 
-	for _, slo := range sloResults {
+	var sloBlocks []slack.Block
+
+	for i := range sloResults {
+		slo := sloResults[i]
+
 		// Name
 		// https://app.datadoghq.com/slo?slo_id=id&tab=status_and_history&timeframe=30d
 		sloURL := fmt.Sprintf("%s?slo_id=%s&tab=status_and_history&timeframe=%s", ddSLOURL, slo.ID, slo.TimeFrame)
 		targetText, statusText, errorBudgetText := s.decorateText(&slo)
 
-		blocks = append(blocks, &slack.SectionBlock{
+		sloBlock := &slack.SectionBlock{
 			Type: slack.MBTSection,
 			Text: &slack.TextBlockObject{
 				Type:     slack.MarkdownType,
@@ -58,14 +61,16 @@ func (s *Client) BuildBlock(sloResults []models.SLOResult, ddSLOURL string) []sl
 					Text: errorBudgetText,
 				},
 			},
-		})
-		blocks = append(blocks, slack.NewDividerBlock())
+		}
+		sloBlocks = append(sloBlocks, sloBlock)
 	}
+
+	blocks = append(blocks, sloBlocks...)
 
 	return blocks
 }
 
-func (s *Client) decorateText(sloResult *models.SLOResult) (target string, status string, errorBudget string) {
+func (s *Client) decorateText(sloResult *models.SLOResult) (target, status, errorBudget string) {
 	// Target
 	target = fmt.Sprintf(":eyes: *Target: * %s%%", lib.ConvertF64ToString(sloResult.Target))
 

@@ -8,16 +8,7 @@ import (
 	"github.com/rluisr/datadog-slo-insufflate/config"
 	"github.com/rluisr/datadog-slo-insufflate/datadog"
 	"github.com/rluisr/datadog-slo-insufflate/slack"
-	"time"
 )
-
-func init() {
-	jst, err := time.LoadLocation("Asia/Tokyo")
-	if err != nil {
-		panic(err)
-	}
-	time.Local = jst
-}
 
 func main() {
 	env, err := config.NewEnv()

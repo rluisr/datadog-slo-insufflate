@@ -1,20 +1,21 @@
 name: Lint
 on:
   push:
+    tags-ignore:
+      - 'v*.*.*'
+    branches:
+      - '*'
   pull_request:
 permissions:
   contents: read
-steps:
-  - name: lint
+jobs:
+  lint:
+    name: lint
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
         with:
           go-version: 1.19
-      - uses: actions/checkout@v3
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
-    when:
-      event:
-        exclude:
-          - tag
