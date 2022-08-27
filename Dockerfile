@@ -15,10 +15,6 @@ LABEL maintainer="rluisr" \
   org.opencontainers.image.title="datadog-slo-insufflate" \
   org.opencontainers.image.description="TradingView webhook handler for Bybit." \
   org.opencontainers.image.licenses="AGPL"
-RUN <<EOF
-    apk add --no-cache ca-certificates libc6-compat tzdata \
-    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-    rm -rf /var/cache/apk/*
-EOF
+RUN apk add --no-cache ca-certificates libc6-compat
 COPY --from=builder /go/src/datadog-slo-insufflate/app /app
 ENTRYPOINT ["/app"]

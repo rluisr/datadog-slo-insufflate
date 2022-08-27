@@ -19,7 +19,9 @@ func (c *Client) FetchSLO() ([]models.SLOResult, error) {
 
 	var sloResults []models.SLOResult
 
-	for _, slo := range slos {
+	for i := range slos {
+		slo := slos[i]
+
 		sloResult := models.SLOResult{
 			Name:        slo.GetName(),
 			ID:          slo.GetId(),
