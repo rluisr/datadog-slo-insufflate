@@ -48,6 +48,19 @@ MMkv<_~~~~~:_~:;<;<>1zlzz1==zvzz<<<_~~~.~__.~_~(<?OXXHMMMMMMMMMMMMMMMMMMMMMMMMMM
 
 ---
 
+Setup
+-----
+
+### Container
+
+```bash
+docker pull ghcr.io/rluisr/datadog-slo-insufflate:latest
+```
+
+### Binary
+
+Download binary from [release page](https://github.com/rluisr/datadog-slo-insufflate/releases).
+
 Environment variables
 ----------------------
 
