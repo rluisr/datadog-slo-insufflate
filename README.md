@@ -1,6 +1,10 @@
 datadog-slo-insufflate
 =======================
 
+[![lint](https://github.com/rluisr/datadog-slo-insufflate/actions/workflows/lint.yml/badge.svg?branch=master)](https://github.com/rluisr/datadog-slo-insufflate/actions/workflows/lint.yml)
+[![release](https://github.com/rluisr/datadog-slo-insufflate/actions/workflows/release.yml/badge.svg)](https://github.com/rluisr/datadog-slo-insufflate/actions/workflows/release.yml)
+
+
 ```
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM8TWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
