@@ -3,7 +3,7 @@ module github.com/rluisr/datadog-slo-insufflate
 go 1.19
 
 require (
-	github.com/DataDog/datadog-api-client-go/v2 v2.2.0
+	github.com/DataDog/datadog-api-client-go/v2 v2.3.0
 	github.com/Netflix/go-env v0.0.0-20220526054621-78278af1949d
 	github.com/slack-go/slack v0.11.2
 )
