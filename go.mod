@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/DataDog/datadog-api-client-go/v2 v2.5.0
 	github.com/Netflix/go-env v0.0.0-20220526054621-78278af1949d
-	github.com/slack-go/slack v0.11.4
+	github.com/slack-go/slack v0.12.1
 )
 
 require (
